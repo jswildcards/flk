@@ -1,112 +1,73 @@
-# Lesson 2: Programming an Electronics Board with Python
+# Lesson 2: Using Artec Robo
 
-## Displaying Images
-
-### Example 1
-
+## DC Motors
 ```python
-from pystubit.board import display, Image
-
-image = Image('00000:01010:00000:10001:01110:')
-display.show(image)
-```
-
-### Example 2
-
-```python
-from pystubit.board import display, Image
-
-image = Image('00100:00100:01110:11111:01010:')
-display.show(image)
-```
-
-## Animated Images
-
-### Example 1
-
-```python
-from pystubit.board import display, Image
-
-image1 = Image('00000:00100:11001:11110:01001:')
-image2 = Image('00000:01000:11001:11110:00110:')
-
-image1.set_base_color((31, 31, 0))
-image2.set_base_color((31, 31, 0))
-
-while True:
-    display.show(image1)
-    display.show(image2)
-```
-
-### Example 2
-
-```python
-from pystubit.board import display, Image
-
-image1 = Image('11100:01100:00100:00110:00111')
-image2 = Image('10000:11000:11111:00011:00001')
-image3 = Image('00001:00111:11111:11000:10000')
-image4 = Image('00111:00110:00100:01100:11100')
-
-image1.set_base_color((0, 31, 31))
-image2.set_base_color((0, 31, 31))
-image3.set_base_color((0, 31, 31))
-image4.set_base_color((0, 31, 31))
-
-while True:
-    display.show(image1, 200)
-    display.show(image2, 200)
-    display.show(image3, 200)
-    display.show(image4, 200)
-```
-
-## Displaying Strings
-
-### Example 1
-
-```python
-from pystubit.board import display
-display.show("A")
-```
-
-### Example 2
-
-```python
-from pystubit.board import display
-display.scroll("AKIRA")
-```
-
-## Light Show
-
-### Example 1
-```python
-from pystubit.board import display
+from pyatcrobo2.parts import DCMotor
 import time
 
-colors = ((31, 0, 0), (31, 31, 0), (0, 31, 0), (0, 31, 31), (0, 0, 31), (31, 0, 31))
-display.clear()
+dcm = DCMotor('M1')
+dcm.power(100)
+dcm.cw()
 
-while True:
-    for color in colors:
-        for x in range(0, 5):
-            for y in range(0, 5):
-                display.set_pixel(x, y, color)
-                time.sleep_ms(100)
+time.sleep(5)
+
+dcm.ccw()
+
+time.sleep_ms(5000)
+
+dcm.stop()
 ```
 
-### Example 2
+## Servomotors
 ```python
-from pystubit.board import display
+from pyatcrobo2.parts import Servomotor
 import time
 
-colors = ((31, 0, 0), (31, 31, 0), (0, 31, 0), (0, 31, 31), (0, 0, 31), (31, 0, 31))
-display.clear()
+servo = Servomotor('P13') 
+servo.set_angle(0)
+
+time.sleep_ms(1000)
+
+servo.set_angle(180)
+```
+
+## IR Photoreflectors
+```python
+from pyatcrobo2.parts import IRPhotoReflector
+import time
+
+ir = IRPhotoReflector('P0') 
 
 while True:
-    for color in colors:
-        for y in range(0, 5):
-            for x in range(0, 5):
-                display.set_pixel(x, y, color)
-            time.sleep_ms(100)
+    value = ir.get_value()
+    print(value)
+    time.sleep_ms(500)
+```
 
+## Ultrasonic Sensors
+```python
+from pyatcrobo2.parts import UltrasonicSensor
+import time
+
+us = UltrasonicSensor('P1')
+
+while True:
+    distance = us.get_distance()
+    print(distance)
+    time.sleep_ms(1000)
+```
+
+## Color Sensors
+```python
+from pyatcrobo2.parts import ColorSensor
+from pystubit.board import button_a
+import time
+
+cs = ColorSensor('I2C')
+
+while True:
+    if button_a.is_pressed():
+        values = cs.get_values()
+        print(values)
+        time.sleep_ms(1000)
 ```

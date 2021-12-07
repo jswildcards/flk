@@ -2,20 +2,20 @@
 
 [Reference](http://bit.do/winstars_basic-python)
 
-## Your First Python Program
+## 你的第一個程式 Your First Python Program
 
 ```python
 print("Hello world!")
 ```
 
-## Creating Variables
+## 建立變數 Creating Variables
 
 ```python
 x = "Hello world!"
 print(x)
 ```
 
-## Variable Types
+## 變數類別 Variable Types
 
 ### Example 1
 
@@ -51,7 +51,7 @@ print(x)
 print(type(x))
 ```
 
-## Mathematical Operators
+## 運算符號 Mathematical Operators
 
 ### Example 1
 
@@ -80,7 +80,7 @@ z = x + y
 print(z)
 ```
 
-## Input
+## 輸入 Input
 
 ```python
 x = input("type in something: ")
@@ -229,7 +229,7 @@ for count in range(1,10,2):
 print('end')
 ```
 
-## Library Import
+## 匯入程式庫 Library Import
 
 ### Example 1
 
@@ -249,6 +249,59 @@ for count in range(10):
   print(count)
   sleep(1)
 print('end')
+```
+
+## 函數定義
+
+### Example 1
+
+```python
+def printWord():
+  print("Hello")
+
+printWord()
+```
+
+### Example 2
+
+```python
+# This function is used for finding the grade according to the score obtained by student
+def score_cal(value):
+  if value >= 90:
+    return "A"
+  elif value > 70:
+    return "B"
+  elif value > 50:
+    return "C"
+  else:
+    return "F"
+
+value = input("input score: ")
+value = int(value)
+print(score_cal(value))
+```
+
+## 類別與實例 Classes and Instances
+
+```python
+class Square:
+  def __init__(self, length):
+    self.length = length
+ 
+  def getArea(self):
+    return self.length ** 2
+ 
+  def setLength(self, length):
+    self.length = length
+ 
+  def toString(self):
+    print("class Square with Length " + str(self.length))
+
+square1 = Square(4)
+print(sqaure1.getArea())
+
+sqaure1.setLength(6)
+print(sqaure1.getArea())
 ```
 
 ## 練習
