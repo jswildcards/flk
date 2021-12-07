@@ -169,7 +169,7 @@ print("correct!")
 ```python
 while True: # not False:
   x = input("type in something: ")
-print(x)
+  print(x)
 ```
 
 #### Example 3
