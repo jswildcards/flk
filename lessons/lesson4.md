@@ -11,7 +11,7 @@
 
 如圖示所示。
 
-![Accelerator](../public/3-2_4_e.png)
+![Accelerator](../public/3-2_4_E.png)
 
 ### 傾斜的加速度
 - 如果 X 軸的值小於-5 ➡ Studuino:bit 向左傾
@@ -49,7 +49,7 @@ while True:
 
 如圖示所示。
 
-![Gyro](../public/3-2_21_e.png)
+![Gyro](../public/3-2_21_E.png)
 
 ### 製作電子螢光棒
 
